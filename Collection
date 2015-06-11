@@ -1,0 +1,61 @@
+import java.util.*;
+
+public class Collection_all {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		////////// MAP //////////
+		
+		//Map<Integer,String> map1=new HashMap<Integer,String>();
+		Map<Integer,String> map1=new LinkedHashMap<Integer,String>();
+		Map<Integer,String> map2=new TreeMap<Integer,String>(map1);		
+		map1.put(7, "sid");
+		map1.put(5, "death");
+		map1.put(9, "note");
+		map1.put(1, "shinigami");
+
+		//System.out.println(map1);
+		disp1(map1);
+		System.out.println("HOLA");
+		disp1(map2);
+	
+		/////////// SET ///////////
+
+		//Set<String> s1=new HashSet<String>();
+		//Set<String> s1=new LinkedHashSet<String>();
+		Set<String> s1=new TreeSet<String>();
+		s1.add("sid");
+		s1.add("death");
+		s1.add("note");
+		s1.add("shinigami");
+		//Set<String> s2=new LinkedHashSet<String>(s1);
+		System.out.println(s1);
+
+		//////////  LIST  ///////////
+		
+		List<String> l1=new ArrayList<String>();
+		//List<String> l1=new LinkedList<String>();
+		l1.add("sid");
+		l1.add("death");
+		l1.add("note");
+		l1.add("shinigami");
+		
+		Iterator it=l1.iterator();
+		while(it.hasNext())
+		{
+			Object obj=it.next();
+			System.out.println(obj);
+		}
+		List<String> l2=new LinkedList<String>(l1);
+		System.out.println("\n"+l2);
+	}
+	
+	static void disp1(Map<Integer,String> map1)
+	{
+		for(Map.Entry<Integer, String> m:map1.entrySet())
+		{
+			System.out.println(m.getKey() + " , "+m.getValue());
+		}
+	}
+}
