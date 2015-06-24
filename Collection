@@ -1,61 +1,193 @@
 import java.util.*;
 
-public class Collection_all {
+public class CollectionAll {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		////////// MAP //////////
-		
-		//Map<Integer,String> map1=new HashMap<Integer,String>();
-		Map<Integer,String> map1=new LinkedHashMap<Integer,String>();
-		Map<Integer,String> map2=new TreeMap<Integer,String>(map1);		
-		map1.put(7, "sid");
-		map1.put(5, "death");
-		map1.put(9, "note");
-		map1.put(1, "shinigami");
-
-		//System.out.println(map1);
-		disp1(map1);
-		System.out.println("HOLA");
-		disp1(map2);
-	
-		/////////// SET ///////////
-
-		//Set<String> s1=new HashSet<String>();
-		//Set<String> s1=new LinkedHashSet<String>();
-		Set<String> s1=new TreeSet<String>();
-		s1.add("sid");
-		s1.add("death");
-		s1.add("note");
-		s1.add("shinigami");
-		//Set<String> s2=new LinkedHashSet<String>(s1);
-		System.out.println(s1);
-
-		//////////  LIST  ///////////
-		
-		List<String> l1=new ArrayList<String>();
-		//List<String> l1=new LinkedList<String>();
-		l1.add("sid");
-		l1.add("death");
-		l1.add("note");
-		l1.add("shinigami");
-		
-		Iterator it=l1.iterator();
-		while(it.hasNext())
-		{
-			Object obj=it.next();
-			System.out.println(obj);
-		}
-		List<String> l2=new LinkedList<String>(l1);
-		System.out.println("\n"+l2);
-	}
-	
-	static void disp1(Map<Integer,String> map1)
-	{
-		for(Map.Entry<Integer, String> m:map1.entrySet())
-		{
-			System.out.println(m.getKey() + " , "+m.getValue());
-		}
+		int choice1=0,choice2=0,choice3=0,key;
+		String element="";
+		Scanner sc=new Scanner(System.in);
+		Scanner sc1=new Scanner(System.in);
+		Set<String> hashSet=new HashSet<String>();
+		Set<String> linkedHashSet=new LinkedHashSet<String>();
+		Set<String> treeSet=new TreeSet<String>();
+		List<String> arrayList=new ArrayList<String>();
+		List<String> linkedList=new LinkedList<String>();
+		Map<Integer,String> hashMap=new HashMap<Integer,String>();
+		Map<Integer,String> linkedHashMap=new LinkedHashMap<Integer,String>();
+		Map<Integer,String> treeMap=new TreeMap<Integer,String>();	
+		do{
+			System.out.println("1.Set\n2.List\n3.Map\n4.Exit\nEnter your choice : ");
+			choice1=sc.nextInt();
+			switch(choice1)
+			{
+				case 1 :
+						System.out.println("1.HashSet\n2.LinkedHashSet\n3.TreeSet\nEnter your choice : ");
+						choice2=sc.nextInt();
+						System.out.println("1.Insert\n2.Remove an element\n3.Check Existence\n4.Display\nEnter your choice : ");
+						choice3=sc.nextInt();
+						switch(choice3)
+						{
+							case 1 : 
+									System.out.println("Enter the element  : ");
+									element=sc1.next();
+									if(choice2==1)
+										hashSet.add(element);
+									else if(choice2==2)
+										linkedHashSet.add(element);
+									else if(choice2==3)
+										treeSet.add(element);
+									break;
+							case 2 : 
+								System.out.println("Enter the element  : ");
+								element=sc1.next();
+								if(choice2==1)
+									hashSet.remove(element);
+								else if(choice2==2)
+									linkedHashSet.remove(element);
+								else if(choice2==3)
+									treeSet.remove(element);
+								break;
+							case 3 : 
+								System.out.println("Enter the element  : ");
+								element=sc1.next();
+								boolean bool=false;
+								if(choice2==1)
+									bool=hashSet.contains(element);
+								else if(choice2==2)
+									bool=linkedHashSet.contains(element);
+								else if(choice2==3)
+									bool=treeSet.contains(element);
+								if(bool)
+									System.out.println(element+" present");
+								else
+									System.out.println(element+" not present");
+								break;
+							case 4 :
+								if(choice2==1)
+									System.out.println(hashSet);
+								else if(choice2==2)
+									System.out.println(linkedHashSet);
+								else if(choice2==3)
+									System.out.println(treeSet);
+								break;
+						}
+						break;
+					case 2 :
+						System.out.println("1.ArrayList\n2.LinkedList\nEnter your choice : ");
+						choice2=sc.nextInt();
+						System.out.println("1.Insert\n2.Remove an element\n3.Check Existence\n4.Display\nEnter your choice : ");
+						choice3=sc.nextInt();
+						switch(choice3)
+						{
+							case 1 : 
+									System.out.println("Enter the element  : ");
+									element=sc1.next();
+									if(choice2==1)
+										arrayList.add(element);
+									else if(choice2==2)
+										linkedList.add(element);
+									break;
+							case 2 : 
+								System.out.println("Enter the element  : ");
+								element=sc1.next();
+								if(choice2==1)
+									arrayList.remove(element);
+								else if(choice2==2)
+									linkedList.remove(element);
+								break;
+							case 3 : 
+								System.out.println("Enter the element  : ");
+								element=sc1.next();
+								boolean bool=false;
+								if(choice2==1)
+									bool=arrayList.contains(element);
+								else if(choice2==2)
+									bool=linkedList.contains(element);
+								if(bool)
+									System.out.println(element+" present");
+								else
+									System.out.println(element+" not present");
+								break;
+							case 4 :
+								if(choice2==1)
+									System.out.println(arrayList);
+								else if(choice2==2)
+									System.out.println(linkedList);
+								break;
+						}
+						break;
+					case 3 :
+						System.out.println("1.HashMap\n2.LinkedHashMap\n3.TreeMap\nEnter your choice : ");
+						choice2=sc.nextInt();
+						System.out.println("1.Insert\n2.Remove an element\n3.Check Existence\n4.Display\nEnter your choice : ");
+						choice3=sc.nextInt();
+						switch(choice3)
+						{
+							case 1 : 
+									System.out.println("Enter the key, element  : ");
+									key=sc.nextInt();
+									element=sc1.next();
+									if(choice2==1)
+										hashMap.put(key,element);
+									else if(choice2==2)
+										linkedHashMap.put(key,element);
+									else if(choice2==3)
+										treeMap.put(key,element);
+									break;
+							case 2 : 
+								System.out.println("Enter the element : ");
+								element=sc1.next();
+								if(choice2==1)
+									hashMap.remove(element);
+								else if(choice2==2)
+									linkedHashMap.remove(element);
+								else if(choice2==3)
+									treeMap.remove(element);
+								break;
+							case 3 : 
+								System.out.println("Check existence by key(0) or value(1) : ");
+								int checkExistence=sc.nextInt();
+								System.out.println("Enter the element or key  : ");
+								element=sc1.next();
+								boolean bool=false;
+								if(choice2==1)
+									if(checkExistence==1)
+										bool=hashMap.containsValue(element);
+									else if(checkExistence==0)
+										bool=hashMap.containsKey(element);
+								else if(choice2==2)
+									if(checkExistence==1)
+										bool=linkedHashMap.containsValue(element);
+									else if(checkExistence==0)
+										bool=linkedHashMap.containsKey(element);
+								else if(choice2==3)
+									if(checkExistence==1)
+										bool=treeMap.containsValue(element);
+									else if(checkExistence==0)
+										bool=treeMap.containsKey(element);
+								if(bool)
+									System.out.println(element+" present");
+								else
+									System.out.println(element+" not present");
+								break;
+							case 4 :
+								Set set=null;
+								if(choice2==1)
+									set = hashMap.entrySet();
+								else if(choice2==2)
+									set = linkedHashMap.entrySet();
+								else if(choice2==3)
+									set = treeMap.entrySet();
+								Iterator i = set.iterator();
+							    while(i.hasNext()) 
+							    {
+							         Map.Entry m = (Map.Entry)i.next();
+							         System.out.println(m.getKey() + ": "+m.getValue());
+							    }
+						}
+				}
+		}while(choice1!=4);
 	}
 }
